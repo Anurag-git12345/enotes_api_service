@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -14,19 +13,25 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> handleException(Exception e) {
-		log.error("GlobalExceptionHandler :: handleException ::", e.getMessage());
+		log.error("GlobalExceptionHandler :: handleException ::", e);
 		return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	@ExceptionHandler(NullPointerException.class)
-	public ResponseEntity<?> handleNullPointerException(Exception e) {
-		log.error("GlobalExceptionHandler :: handleNullPointerException ::", e.getMessage());
+	public ResponseEntity<?> handleNullPointerException(NullPointerException e) {
+		log.error("GlobalExceptionHandler :: handleNullPointerException ::", e);
 		return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<?> handleResourceNotFoundException(Exception e) {
-		log.error("GlobalExceptionHandler :: handleResourceNotFoundException ::", e.getMessage());
+	public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException e) {
+		log.error("GlobalExceptionHandler :: handleResourceNotFoundException ::", e);
 		return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(ValidationException.class)
+	public ResponseEntity<?> handleValidationException(ValidationException e) {
+		log.error("GlobalExceptionHandler :: handleValidationException ::", e);
+		return new ResponseEntity<>(e.getErrors(), HttpStatus.BAD_REQUEST);
 	}
 }
