@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.becoder.dto.NotesDto;
 import com.becoder.dto.NotesDto.CategoryDto;
+import com.becoder.dto.NotesDto.FilesDto;
 import com.becoder.dto.NotesResponse;
 import com.becoder.entity.FileDetails;
 import com.becoder.entity.Notes;
@@ -58,6 +59,13 @@ public class NotesServiceImpl implements NotesService {
 		ObjectMapper ob = new ObjectMapper();
 		NotesDto notesDto = ob.readValue(notes, NotesDto.class);
 
+		
+
+		// update notes if id is given in request
+		if (!ObjectUtils.isEmpty(notesDto.getId())) {
+			updateNotes(notesDto, file);
+		}
+
 		// category validation
 		checkCategoryExist(notesDto.getCategory());
 
@@ -68,7 +76,9 @@ public class NotesServiceImpl implements NotesService {
 		if (!ObjectUtils.isEmpty(fileDtls)) {
 			notesMap.setFileDetails(fileDtls);
 		} else {
-			notesMap.setFileDetails(null);
+			if (ObjectUtils.isEmpty(notesDto.getId())) {
+				notesMap.setFileDetails(null);
+			}
 		}
 
 		Notes saveNotes = notesRepo.save(notesMap);
@@ -78,6 +88,18 @@ public class NotesServiceImpl implements NotesService {
 		return false;
 	}
 
+	private void updateNotes(NotesDto notesDto, MultipartFile file) throws Exception {
+
+		Notes existNotes = notesRepo.findById(notesDto.getId())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid Notes id"));
+
+		// user not choose any file at update time
+		if (ObjectUtils.isEmpty(file)) {
+			notesDto.setFileDetails(mapper.map(existNotes.getFileDetails(), FilesDto.class));
+		}
+
+	}
+
 	private FileDetails saveFileDetails(MultipartFile file) throws IOException {
 
 		if (!ObjectUtils.isEmpty(file) && !file.isEmpty()) {
@@ -85,7 +107,7 @@ public class NotesServiceImpl implements NotesService {
 			String originalFilename = file.getOriginalFilename();
 			String extension = FilenameUtils.getExtension(originalFilename);
 
-			List<String> extensionAllow = Arrays.asList("pdf", "xlsx", "jpg", "png");
+			List<String> extensionAllow = Arrays.asList("pdf", "xlsx", "jpg", "png", "docx");
 			if (!extensionAllow.contains(extension)) {
 				throw new IllegalArgumentException("invalid file format ! Upload only .pdf , .xlsx,.jpg");
 			}
@@ -116,23 +138,22 @@ public class NotesServiceImpl implements NotesService {
 
 		return null;
 	}
-	
+
 	private String getDisplayName(String originalFilename) {
 		// java_programming_tutorials.pdf
 		// java_prog.pdf
-		String extention = FilenameUtils.getExtension(originalFilename);
+		String extension = FilenameUtils.getExtension(originalFilename);
 		String fileName = FilenameUtils.removeExtension(originalFilename);
 
 		if (fileName.length() > 8) {
 			fileName = fileName.substring(0, 7);
 		}
-		fileName = fileName + "." + extention;
+		fileName = fileName + "." + extension;
 		return fileName;
 	}
 
 	private void checkCategoryExist(CategoryDto category) throws Exception {
 		categoryRepo.findById(category.getId()).orElseThrow(() -> new ResourceNotFoundException("category id invalid"));
-
 	}
 
 	@Override
@@ -142,9 +163,9 @@ public class NotesServiceImpl implements NotesService {
 
 	@Override
 	public byte[] downloadFile(FileDetails fileDetails) throws Exception {
-		
+
 		InputStream io = new FileInputStream(fileDetails.getPath());
-		
+
 		return StreamUtils.copyToByteArray(io);
 	}
 
@@ -157,18 +178,17 @@ public class NotesServiceImpl implements NotesService {
 
 	@Override
 	public NotesResponse getAllNotesByUser(Integer userId, Integer pageNo, Integer pageSize) {
-		// 10 = 5, 5 = 2 pages
+		// 10 = 5,5 = 2 pages
 		Pageable pageable = PageRequest.of(pageNo, pageSize);
-		Page<Notes> pageNotes = notesRepo.findByCreatedBy(userId, pageable);
-		
+		Page<Notes> pageNotes = notesRepo.findByCreatedByAndIsDeletedFalse(userId, pageable);
+
 		List<NotesDto> notesDto = pageNotes.get().map(n -> mapper.map(n, NotesDto.class)).toList();
-		
+
 		NotesResponse notes = NotesResponse.builder().notes(notesDto).pageNo(pageNotes.getNumber())
 				.pageSize(pageNotes.getSize()).totalElements(pageNotes.getTotalElements())
 				.totalPages(pageNotes.getTotalPages()).isFirst(pageNotes.isFirst()).isLast(pageNotes.isLast()).build();
-		
+
 		return notes;
 	}
-
 	
-}
+}	
