@@ -13,18 +13,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.becoder.entity.User;
+import com.becoder.exception.JwtTokenExpiredException;
 import com.becoder.service.JwtService;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 @Service
-public class JwtServiceImpl implements JwtService{
+public class JwtServiceImpl implements JwtService {
 
-	private  String secretKey = "";
-	
+	private String secretKey = "";
+
 	public JwtServiceImpl() {
 		try {
 			KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
@@ -34,23 +37,20 @@ public class JwtServiceImpl implements JwtService{
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public String GenerateToken(User user) {
-		
+
 		Map<String, Object> claims = new HashMap<>();
 		claims.put("id", user.getId());
 		claims.put("role", user.getRoles());
 		claims.put("status", user.getStatus().getIsActive());
-		
-		String token = Jwts.builder().claims().add(claims)
-				.subject(user.getEmail())
+
+		String token = Jwts.builder().claims().add(claims).subject(user.getEmail())
 				.issuedAt(new Date(System.currentTimeMillis()))
-				.expiration(new Date(System.currentTimeMillis() + 60 * 60 * 60 * 10))
-				.and()
-				.signWith(getKey())
+				.expiration(new Date(System.currentTimeMillis() + 60 * 60 * 10)).and().signWith(getKey())
 				.compact();
-		
+
 		return token;
 	}
 
@@ -64,18 +64,24 @@ public class JwtServiceImpl implements JwtService{
 		Claims claims = extractAllClaims(token);
 		return claims.getSubject();
 	}
-	
+
 	public String role(String token) {
 		Claims claims = extractAllClaims(token);
-		String role = (String)claims.get("role");
+		String role = (String) claims.get("role");
 		return role;
 	}
 
 	private Claims extractAllClaims(String token) {
-		Claims claims = Jwts.parser()
-						.verifyWith(decryptKey(secretKey))
-						.build().parseSignedClaims(token).getPayload();
-		return claims;
+		try {
+			return Jwts.parser().verifyWith(decryptKey(secretKey)).build().parseSignedClaims(token).getPayload();
+		} catch (ExpiredJwtException e) {
+			throw new JwtTokenExpiredException("Token is Expired");
+		} catch (JwtException e) {
+			throw new JwtTokenExpiredException("Invalid Jwt token");
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 
 	private SecretKey decryptKey(String secretKey2) {
@@ -85,14 +91,14 @@ public class JwtServiceImpl implements JwtService{
 
 	@Override
 	public Boolean validateToken(String token, UserDetails userDetails) {
-		
+
 		String username = extractUsername(token);
 		Boolean isExpired = isTokenExpired(token);
 		if (username.equalsIgnoreCase(userDetails.getUsername()) && !isExpired) {
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
 
