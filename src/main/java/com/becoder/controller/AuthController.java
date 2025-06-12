@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.becoder.dto.LoginRequest;
 import com.becoder.dto.LoginResponse;
-import com.becoder.dto.UserDto;
+import com.becoder.dto.UserRequest;
 import com.becoder.service.AuthService;
 import com.becoder.util.CommonUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
@@ -24,13 +26,16 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 	
-	@PostMapping("/")
-	public ResponseEntity<?> registerUser(@RequestBody UserDto userDto, HttpServletRequest request) throws Exception {
+	@PostMapping("/register")
+	public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest, HttpServletRequest request) throws Exception {
+		log.info("AuthController : registerUser() : Execution Start");
 		String url = CommonUtil.getUrl(request);
-		Boolean register = authService.register(userDto,url);
-		if (register) {
+		Boolean register = authService.register(userRequest,url);
+		if (!register) {
+			log.info("Error : {}","Register failed");
 			return CommonUtil.createBuildResponseMessage("Register success", HttpStatus.CREATED);
 		}
+		log.info("AuthController : registerUser() : Execution End");
 		return CommonUtil.createErrorResponseMessage("Register failed", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
