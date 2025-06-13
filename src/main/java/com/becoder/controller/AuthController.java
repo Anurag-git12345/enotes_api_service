@@ -4,14 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.becoder.dto.LoginRequest;
 import com.becoder.dto.LoginResponse;
 import com.becoder.dto.UserRequest;
+import com.becoder.endpoints.AuthEndPoint;
 import com.becoder.service.AuthService;
 import com.becoder.util.CommonUtil;
 
@@ -20,13 +19,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/auth")
-public class AuthController {
+public class AuthController implements AuthEndPoint {
 
 	@Autowired
 	private AuthService authService;
 	
-	@PostMapping("/register")
+	@Override
 	public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest, HttpServletRequest request) throws Exception {
 		log.info("AuthController : registerUser() : Execution Start");
 		String url = CommonUtil.getUrl(request);
@@ -39,7 +37,7 @@ public class AuthController {
 		return CommonUtil.createErrorResponseMessage("Register failed", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PostMapping("/login")
+	@Override
 	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
 		
 		LoginResponse loginResponse = authService.login(loginRequest);
