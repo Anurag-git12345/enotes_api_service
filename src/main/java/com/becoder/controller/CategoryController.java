@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.becoder.dto.CategoryDto;
 import com.becoder.dto.CategoryResponses;
+import com.becoder.endpoints.CategoryEndpoint;
 import com.becoder.entity.Category;
 import com.becoder.exception.ResourceNotFoundException;
 import com.becoder.service.CategoryService;
@@ -27,14 +28,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/category")
-public class CategoryController {
+public class CategoryController implements CategoryEndpoint{
 
 	@Autowired
 	private CategoryService categoryService;
 
-	@PostMapping("/save")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> saveCategory(@RequestBody CategoryDto categoryDto) {
 
 		Boolean saveCategory = categoryService.saveCategory(categoryDto);
@@ -47,8 +46,7 @@ public class CategoryController {
 		}
 	}
 
-	@GetMapping("/")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> getAllCategory() {
 		List<CategoryDto> allCategory = categoryService.getAllCategory();
 		if (CollectionUtils.isEmpty(allCategory)) {
@@ -59,8 +57,7 @@ public class CategoryController {
 		}
 	}
 
-	@GetMapping("/active")
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	@Override
 	public ResponseEntity<?> getActiveCategory() {
 
 		List<CategoryResponses> allCategory = categoryService.getActiveCategory();
@@ -72,8 +69,7 @@ public class CategoryController {
 		}
 	}
 
-	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> getCategoryDetailsById(@PathVariable Integer id) throws Exception {
 
 		CategoryDto categoryDto = categoryService.getCategoryById(id);
@@ -85,8 +81,7 @@ public class CategoryController {
 //		return new ResponseEntity<>(categoryDto, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> deleteCategoryById(@PathVariable Integer id) {
 		Boolean deleted = categoryService.deleteCategory(id);
 		if (deleted) {

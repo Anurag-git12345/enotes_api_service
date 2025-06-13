@@ -12,33 +12,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.becoder.dto.PasswordChangeRequest;
 import com.becoder.dto.UserResponse;
+import com.becoder.endpoints.UserEndpoint;
 import com.becoder.entity.User;
 import com.becoder.service.UserService;
 import com.becoder.util.CommonUtil;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
-@RequestMapping("/api/v1/user")
-public class UserController {
+public class UserController implements UserEndpoint {
 
 	@Autowired
 	private ModelMapper mapper;
-	
+
 	@Autowired
 	private UserService userService;
-	
-	@GetMapping("/profile")
+
+	@Override
 	public ResponseEntity<?> getProfile() {
 		User loggedInUser = CommonUtil.getLoggedInUser();
 		UserResponse userResponse = mapper.map(loggedInUser, UserResponse.class);
 		return CommonUtil.createBuildResponse(userResponse, HttpStatus.OK);
 	}
-	
-	@PostMapping("/chng-pswd")
+
+	@Override
 	public ResponseEntity<?> changePassword(@RequestBody PasswordChangeRequest passwordRequest) {
 		userService.ChangePassword(passwordRequest);
 		return CommonUtil.createBuildResponseMessage("Password change success", HttpStatus.OK);
 	}
+
 }
