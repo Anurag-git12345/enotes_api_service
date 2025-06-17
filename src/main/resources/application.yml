@@ -3,9 +3,8 @@ spring:
     name: enotes_api_service
   profiles:
     active: dev
-    
+
 ---
-# dev config
 spring:
   config:
     activate:
@@ -19,11 +18,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-        show_sql: true 
-        format_sql: true
     hibernate:
       ddl-auto: none
-        
   servlet:
     multipart:
       max-file-size: 100MB
@@ -45,22 +41,12 @@ springdoc:
     tagsSorter: alpha
     path: /enotes-doc
   api-docs:
-    path: /enotes-api-doc  
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-        exclude: beans,loggers
-  endpoint:
-    shutdown:
-      enabled: true      
-                
+    path: /enotes-api-doc
 file:
   upload:
     path: notes/
+
 ---
-# test config
 spring:
   config:
     activate:
@@ -75,7 +61,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: none    
+      ddl-auto: none
   servlet:
     multipart:
       max-file-size: 100MB
@@ -89,21 +75,20 @@ spring:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true
+          starttls:
+            enable: true
 springdoc:
   swagger-ui:
     operationsSorter: method
     tagsSorter: alpha
     path: /enotes-doc
   api-docs:
-    path: /enotes-api-doc 
-                 
+    path: /enotes-api-doc
 file:
   upload:
     path: notes/
+
 ---
-# uat config
 spring:
   config:
     activate:
@@ -118,7 +103,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: none    
+      ddl-auto: none
   servlet:
     multipart:
       max-file-size: 100MB
@@ -132,25 +117,24 @@ spring:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true       
+          starttls:
+            enable: true
 springdoc:
   swagger-ui:
     operationsSorter: method
     tagsSorter: alpha
     path: /enotes-doc
   api-docs:
-    path: /enotes-api-doc 
-
+    path: /enotes-api-doc
 file:
   upload:
     path: notes/
+
 ---
-# prod config
 spring:
   config:
     activate:
-      on-profile: prod   
+      on-profile: prod
   datasource:
     url: jdbc:mysql://localhost:3306/enotes_prod
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -161,7 +145,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: none    
+      ddl-auto: none
   servlet:
     multipart:
       max-file-size: 100MB
@@ -175,18 +159,17 @@ spring:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true 
+          starttls:
+            enable: true
 server:
-  port: 8083                 
+  port: 8083
 springdoc:
   swagger-ui:
     operationsSorter: method
     tagsSorter: alpha
     path: /enotes-doc
   api-docs:
-    path: /enotes-api-doc 
+    path: /enotes-api-doc
 file:
   upload:
     path: notes/
-    

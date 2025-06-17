@@ -17,6 +17,9 @@ import com.becoder.entity.User;
 import com.becoder.service.UserService;
 import com.becoder.util.CommonUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class UserController implements UserEndpoint {
 
