@@ -1,0 +1,152 @@
+2025-21-06 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: AuthController :: login()
+2025-21-06 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: AuthServiceImpl :: login()
+2025-21-06 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: GenerateToken()
+2025-21-06 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: GenerateToken() :: 67 ms
+2025-21-06 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: AuthServiceImpl :: login() :: 997 ms
+2025-21-06 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: AuthController :: login() :: 1003 ms
+2025-21-06 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 6 ms
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 5 ms
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Calling :: CacheController :: getAllCache()
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCache()
+2025-21-06 16 INFO  [http-nio-8080-exec-3] c.b.s.impl.CacheManagerServiceImpl - cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@54ac7a80
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Execution End :: CacheManagerServiceImpl :: getCache() :: 14 ms
+2025-21-06 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Execution End :: CacheController :: getAllCache() :: 21 ms
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 2 ms
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 2 ms
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: CacheController :: getCache()
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCacheName()
+2025-21-07 16 INFO  [http-nio-8080-exec-4] c.b.s.impl.CacheManagerServiceImpl - cache Name= org.springframework.cache.concurrent.ConcurrentMapCache@54ac7a80
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: CacheManagerServiceImpl :: getCacheName() :: 0 ms
+2025-21-07 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: CacheController :: getCache() :: 0 ms
+2025-21-11 16 INFO  [http-nio-8080-exec-7] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-11 16 INFO  [http-nio-8080-exec-7] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 11 ms
+2025-21-11 16 INFO  [http-nio-8080-exec-7] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-11 16 INFO  [http-nio-8080-exec-7] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 3 ms
+2025-21-11 16 ERROR [http-nio-8080-exec-7] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleAccessDeniedException() : Access Denied
+2025-21-11 16 WARN  [http-nio-8080-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2025-21-11 16 INFO  [http-nio-8080-exec-8] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-11 16 INFO  [http-nio-8080-exec-8] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 2 ms
+2025-21-11 16 INFO  [http-nio-8080-exec-8] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-11 16 INFO  [http-nio-8080-exec-8] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 15 ms
+2025-21-11 16 ERROR [http-nio-8080-exec-8] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleAccessDeniedException() : Access Denied
+2025-21-11 16 WARN  [http-nio-8080-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2025-21-12 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-12 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 3 ms
+2025-21-12 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-12 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 5 ms
+2025-21-12 16 ERROR [http-nio-8080-exec-9] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleAccessDeniedException() : Access Denied
+2025-21-12 16 WARN  [http-nio-8080-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 2 ms
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 5 ms
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: CacheController :: getAllCache()
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCache()
+2025-21-13 16 INFO  [http-nio-8080-exec-1] c.b.s.impl.CacheManagerServiceImpl - cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@54ac7a80
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: CacheManagerServiceImpl :: getCache() :: 0 ms
+2025-21-13 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: CacheController :: getAllCache() :: 1 ms
+2025-21-48 16 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2025-21-48 16 INFO  [Thread-15] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-21-48 16 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-21-48 16 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-21-48 16 INFO  [Thread-15] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-21-48 16 INFO  [Thread-15] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-21-48 16 INFO  [Thread-15] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2025-21-48 16 INFO  [Thread-15] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2025-21-48 16 INFO  [restartedMain] c.b.EnotesApiServiceApplication - Starting EnotesApiServiceApplication using Java 17.0.14 with PID 1188 (D:\spring_boot_tutorial\enotes_api_service\target\classes started by USER in D:\spring_boot_tutorial\enotes_api_service)
+2025-21-48 16 INFO  [restartedMain] c.b.EnotesApiServiceApplication - The following 1 profile is active: "dev"
+2025-21-48 16 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-21-48 16 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 7 JPA repository interfaces.
+2025-21-48 16 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-21-48 16 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-21-48 16 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-21-48 16 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-21-48 16 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-21-48 16 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5022 ms
+2025-21-48 16 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-21-48 16 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-21-48 16 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-21-48 16 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2025-21-48 16 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11e8d213
+2025-21-48 16 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2025-21-48 16 WARN  [restartedMain] org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-21-48 16 WARN  [restartedMain] org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-21-48 16 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-21-48 16 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-21-48 16 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-21-48 16 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-21-48 16 WARN  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-21-48 16 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-21-48 16 INFO  [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoints beneath base path '/actuator'
+2025-21-48 16 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-21-48 16 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-21-48 16 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-21-48 16 INFO  [restartedMain] c.b.EnotesApiServiceApplication - Started EnotesApiServiceApplication in 20.875 seconds (process running for 8459.233)
+2025-21-48 16 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-21-49 16 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-21-49 16 INFO  [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-21-49 16 INFO  [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-21-49 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Calling :: AuthController :: login()
+2025-21-49 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Calling :: AuthServiceImpl :: login()
+2025-21-49 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: GenerateToken()
+2025-21-49 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: GenerateToken() :: 12 ms
+2025-21-49 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Execution End :: AuthServiceImpl :: login() :: 551 ms
+2025-21-49 16 INFO  [http-nio-8080-exec-2] com.becoder.aspect.LoggingAspect - Execution End :: AuthController :: login() :: 587 ms
+2025-21-50 16 INFO  [http-nio-8080-exec-3] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 2 ms
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 2 ms
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: CategoryController :: getActiveCategory()
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: CategoryServiceImpl :: getActiveCategory()
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: CategoryServiceImpl :: getActiveCategory() :: 60 ms
+2025-21-50 16 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: CategoryController :: getActiveCategory() :: 63 ms
+2025-21-56 16 INFO  [http-nio-8080-exec-7] com.becoder.aspect.LoggingAspect - Calling :: AuthController :: registerUser()
+2025-21-56 16 INFO  [http-nio-8080-exec-7] c.becoder.controller.AuthController - AuthController : registerUser() : Execution Start
+2025-21-56 16 INFO  [http-nio-8080-exec-7] com.becoder.aspect.LoggingAspect - Calling :: AuthServiceImpl :: register()
+2025-21-56 16 INFO  [http-nio-8080-exec-7] c.b.service.impl.AuthServiceImpl - AuthServiceImpl : register() : Execution Start
+2025-21-56 16 ERROR [http-nio-8080-exec-7] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleExistDataException() : Email already exist
+2025-21-56 16 WARN  [http-nio-8080-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.becoder.exception.ExistDataException: Email already exist]
+2025-21-56 16 INFO  [http-nio-8080-exec-8] com.becoder.aspect.LoggingAspect - Calling :: AuthController :: registerUser()
+2025-21-56 16 INFO  [http-nio-8080-exec-8] c.becoder.controller.AuthController - AuthController : registerUser() : Execution Start
+2025-21-56 16 INFO  [http-nio-8080-exec-8] com.becoder.aspect.LoggingAspect - Calling :: AuthServiceImpl :: register()
+2025-21-56 16 INFO  [http-nio-8080-exec-8] c.b.service.impl.AuthServiceImpl - AuthServiceImpl : register() : Execution Start
+2025-21-56 16 ERROR [http-nio-8080-exec-8] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleExistDataException() : Email already exist
+2025-21-56 16 WARN  [http-nio-8080-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.becoder.exception.ExistDataException: Email already exist]
+2025-21-57 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-57 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 52 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-57 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 3 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Calling :: AuthController :: registerUser()
+2025-21-57 16 INFO  [http-nio-8080-exec-9] c.becoder.controller.AuthController - AuthController : registerUser() : Execution Start
+2025-21-57 16 INFO  [http-nio-8080-exec-9] com.becoder.aspect.LoggingAspect - Calling :: AuthServiceImpl :: register()
+2025-21-57 16 INFO  [http-nio-8080-exec-9] c.b.service.impl.AuthServiceImpl - AuthServiceImpl : register() : Execution Start
+2025-21-57 16 ERROR [http-nio-8080-exec-9] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleExistDataException() : Email already exist
+2025-21-57 16 WARN  [http-nio-8080-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.becoder.exception.ExistDataException: Email already exist]
+2025-21-57 16 INFO  [http-nio-8080-exec-10] com.becoder.aspect.LoggingAspect - Calling :: AuthController :: login()
+2025-21-57 16 INFO  [http-nio-8080-exec-10] com.becoder.aspect.LoggingAspect - Calling :: AuthServiceImpl :: login()
+2025-21-57 16 INFO  [http-nio-8080-exec-10] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: GenerateToken()
+2025-21-57 16 INFO  [http-nio-8080-exec-10] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: GenerateToken() :: 15 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-10] com.becoder.aspect.LoggingAspect - Execution End :: AuthServiceImpl :: login() :: 256 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-10] com.becoder.aspect.LoggingAspect - Execution End :: AuthController :: login() :: 257 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 6 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 6 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: CacheController :: getAllCache()
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCache()
+2025-21-57 16 INFO  [http-nio-8080-exec-1] c.b.s.impl.CacheManagerServiceImpl - cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@4ac33e1c
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: CacheManagerServiceImpl :: getCache() :: 7 ms
+2025-21-57 16 INFO  [http-nio-8080-exec-1] com.becoder.aspect.LoggingAspect - Execution End :: CacheController :: getAllCache() :: 16 ms

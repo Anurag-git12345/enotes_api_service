@@ -1,19 +1,24 @@
 package com.becoder.service.impl;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.becoder.dto.CategoryDto;
 import com.becoder.dto.CategoryResponses;
 import com.becoder.entity.Category;
+import com.becoder.exception.ExistDataException;
 import com.becoder.exception.ResourceNotFoundException;
 import com.becoder.repository.CategoryRepository;
+import com.becoder.service.CacheManagerService;
 import com.becoder.service.CategoryService;
 import com.becoder.util.Validation;
 
@@ -29,11 +34,21 @@ public class CategoryServiceImpl implements CategoryService{
 	@Autowired
 	private Validation validation; 
 	
+	@Autowired
+	private CacheManagerService cacheService;
+	
 	@Override
 	public Boolean saveCategory(CategoryDto categoryDto) {
 		
 //		validation checking
 		validation.categoryValidation(categoryDto);
+		
+		// check category exist or not
+		Boolean exist = categoryRepo.existsByName(categoryDto.getName().trim());
+		if (exist) {
+//			throe error
+			throw new ExistDataException("Category already exist");
+		}
 		
 		Category category = mapper.map(categoryDto, Category.class);
 		
@@ -59,13 +74,14 @@ public class CategoryServiceImpl implements CategoryService{
 			category.setCreatedOn(existCategory.getCreatedOn());
 			category.setIsDeleted(existCategory.getIsDeleted());
 			
-			category.setUpdatedBy(1);
-			category.setUpdatedOn(new Date());
+//			category.setUpdatedBy(1);
+//			category.setUpdatedOn(new Date());
 		}
 		
 	}
 
 	@Override
+	@Cacheable("allCategory")
 	public List<CategoryDto> getAllCategory() {
 		List<Category> categories = categoryRepo.findByIsDeletedFalse();
 		
@@ -75,6 +91,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
+	@Cacheable("activeCategory")
 	public List<CategoryResponses> getActiveCategory() {
 		
 		List<Category> categories = categoryRepo.findByIsActiveTrueAndIsDeletedFalse();
@@ -83,6 +100,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
+	@Cacheable(value = "getCategoryById" , key = "#id")
 	public CategoryDto getCategoryById(Integer id) throws Exception {
 		
 		Category category = categoryRepo.findByIdAndIsDeletedFalse(id)
@@ -96,6 +114,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
+	@CacheEvict(value = "getCategoryById" , key = "#id")
 	public Boolean deleteCategory(Integer id) {
 		Optional<Category> findByCategory = categoryRepo.findById(id);
 		
@@ -103,6 +122,9 @@ public class CategoryServiceImpl implements CategoryService{
 			Category category = findByCategory.get();
 			category.setIsDeleted(true);
 			categoryRepo.save(category);
+			
+//			remove from cache
+			cacheService.removeCacheByName(Arrays.asList("allCategory","activeCategory"));
 			return true;
 		}
 		return false;

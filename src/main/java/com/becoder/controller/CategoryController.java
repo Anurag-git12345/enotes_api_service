@@ -41,7 +41,7 @@ public class CategoryController implements CategoryEndpoint{
 			return CommonUtil.createBuildResponseMessage("saved success",HttpStatus.CREATED);
 //			return new ResponseEntity<>("saved success", HttpStatus.CREATED);
 		} else {
-			return CommonUtil.createErrorResponseMessage("category not saved", HttpStatus.INTERNAL_SERVER_ERROR);
+			return CommonUtil.createErrorResponseMessage("Category Not saved", HttpStatus.INTERNAL_SERVER_ERROR);
 //			return new ResponseEntity<>("not saved", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}

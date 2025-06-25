@@ -1,0 +1,23 @@
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 2 ms
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 1 ms
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: CacheController :: getCache()
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCacheName()
+2025-21-03 17 INFO  [http-nio-8080-exec-4] c.b.s.impl.CacheManagerServiceImpl - cache Name= org.springframework.cache.concurrent.ConcurrentMapCache@4ac33e1c
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: CacheManagerServiceImpl :: getCacheName() :: 0 ms
+2025-21-03 17 INFO  [http-nio-8080-exec-4] com.becoder.aspect.LoggingAspect - Execution End :: CacheController :: getCache() :: 1 ms
+2025-21-05 17 INFO  [http-nio-8080-exec-6] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-21-05 17 INFO  [http-nio-8080-exec-6] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: extractUsername() :: 1 ms
+2025-21-05 17 INFO  [http-nio-8080-exec-6] com.becoder.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-21-05 17 INFO  [http-nio-8080-exec-6] com.becoder.aspect.LoggingAspect - Execution End :: JwtServiceImpl :: validateToken() :: 1 ms
+2025-21-05 17 ERROR [http-nio-8080-exec-6] c.b.exception.GlobalExceptionHandler - GlobalExceptionHandler : handleAccessDeniedException() : Access Denied
+2025-21-05 17 WARN  [http-nio-8080-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2025-21-10 17 INFO  [RMI TCP Connection(168)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-21-10 17 INFO  [RMI TCP Connection(168)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-21-10 17 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-21-10 17 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-21-10 17 INFO  [RMI TCP Connection(168)-127.0.0.1] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-21-10 17 INFO  [RMI TCP Connection(168)-127.0.0.1] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-21-10 17 INFO  [RMI TCP Connection(168)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2025-21-10 17 INFO  [RMI TCP Connection(168)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.

@@ -5,25 +5,32 @@ spring:
     active: dev
 
 ---
+
 spring:
   config:
     activate:
       on-profile: dev
+
   datasource:
     url: jdbc:mysql://localhost:3306/enotes_dev
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: Anurag@12
+
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
     hibernate:
       ddl-auto: none
+
   servlet:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+
   mail:
     host: smtp.gmail.com
     username: anuragkatare1999@gmail.com
